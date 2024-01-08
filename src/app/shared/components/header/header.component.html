@@ -1,0 +1,20 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        *ngIf="routeBackButton"
+        [defaultHref]="routeBackButton"
+      ></ion-back-button>
+
+      <!-- Boton para cerrar la modal -->
+      <ion-button *ngIf="isModal" (click)="onDismissModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <strong>{{ title }}</strong>
+      <div class="admin">J I R E N</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

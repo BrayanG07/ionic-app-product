@@ -1,0 +1,12 @@
+ion-card {
+  gap: 100px;
+  padding: 20px 0;
+  border-radius: 15px;
+}
+
+/*
+Hacemos esto para que el boton de agrear nuevo producto no cubra el ultimo elemento de la lista
+*/
+ion-content {
+  --padding-bottom: 70px;
+}

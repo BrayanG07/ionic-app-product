@@ -1,0 +1,6 @@
+<span
+  class="validators"
+  *ngIf="control.errors && (control.touched || formDirective.submitted)"
+>
+  {{ errorMessages | validation : control.errors }}
+</span>

@@ -1,0 +1,75 @@
+<shared-header [title]="textAction" [isModal]="true"></shared-header>
+
+<ion-content>
+  <form
+    [formGroup]="form"
+    class="ion-padding ion-text-center"
+    (ngSubmit)="onSubmit()"
+  >
+
+    <!-- Si existe una imagen, la mostramos -->
+    <ion-avatar *ngIf="form.value.image; else imageNotFound">
+      <img [src]="form.value.image" [alt]="form.value.name" />
+    </ion-avatar>
+
+    <!-- Si no exista una image  -->
+    <ng-template #imageNotFound>
+      <ion-icon class="image-icon" name="image-outline"></ion-icon>
+    </ng-template>
+    <hr/>
+
+    <!-- Tomar/Seleccionar una imagen -->
+    <ion-button
+      (click)="onTakePicture()"
+      shape="round"
+      size="small"
+      mode="ios"
+    >
+      Tomar/Seleccionar
+    </ion-button>
+
+    <shared-custom-input
+      autocomplete="off"
+      label="Nombre"
+      type="text"
+      [control]="form.controls.name"
+    >
+    </shared-custom-input>
+    <shared-error-field
+      [control]="form.controls.name"
+      [errorMessages]="validationMessages.name"
+    />
+
+    <shared-custom-input
+      label="Precio"
+      type="number"
+      [control]="form.controls.price"
+    >
+    </shared-custom-input>
+    <shared-error-field
+      [control]="form.controls.price"
+      [errorMessages]="validationMessages.price"
+    />
+
+    <shared-custom-input
+      label="Unidades Vendidas"
+      type="number"
+      [control]="form.controls.soldUnits"
+    >
+    </shared-custom-input>
+    <shared-error-field
+      [control]="form.controls.soldUnits"
+      [errorMessages]="validationMessages.soldUnits"
+    />
+
+    <ion-button
+      type="submit"
+      [disabled]="form.invalid"
+      class="ion-margin"
+      mode="ios"
+    >
+      {{ textAction }}
+      <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </form>
+</ion-content>

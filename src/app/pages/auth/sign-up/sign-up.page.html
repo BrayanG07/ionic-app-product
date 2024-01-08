@@ -1,0 +1,63 @@
+<shared-header [routeBackButton]="routeBackButton" title="Registrarse"></shared-header>
+
+<ion-content>
+  <div class="d-flex-center">
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="onSubmit()">
+      <shared-logo></shared-logo>
+
+      <shared-custom-input
+        icon="person-outline"
+        autocomplete="off"
+        label="Nombre Completo"
+        type="text"
+        [control]="form.controls.name"
+      >
+      </shared-custom-input>
+      <shared-error-field
+        [control]="form.controls.name"
+        [errorMessages]="validationMessages.name"
+      />
+
+      <shared-custom-input
+        icon="mail-outline"
+        autocomplete="email"
+        label="Correo"
+        type="email"
+        [control]="form.controls.email"
+      ></shared-custom-input>
+      <shared-error-field
+        [control]="form.controls.email"
+        [errorMessages]="validationMessages.email"
+      />
+
+      <shared-custom-input
+        icon="lock-closed-outline"
+        autocomplete="off"
+        label="Contraseña"
+        type="password"
+        [control]="form.controls.password"
+      >
+      </shared-custom-input>
+      <shared-error-field
+        [control]="form.controls.password"
+        [errorMessages]="validationMessages.password"
+      />
+
+      <p routerLink="auth" class="ion-text-start">
+        ¿Ya tienes una cuenta?
+      </p>
+
+      <ion-button
+        type="submit"
+        [disabled]="form.invalid"
+        class="submit"
+        expand="block"
+        mode="ios"
+      >
+        Registrarse
+        <ion-icon slot="start" name="log-in-outline"></ion-icon>
+      </ion-button>
+
+    </form>
+  </div>
+</ion-content>
